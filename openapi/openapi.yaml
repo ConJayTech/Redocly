@@ -1,0 +1,9 @@
+openapi: 3.0.0
+info:
+  title: Documentation for Organization
+  version: 1.0.0
+paths:
+  /api/v2/audience/matched/fields:
+    $ref: paths/api@v2@audience@matched@fields.yaml
+  '/api/v2/audience/matched/update/{matched_audience_Id}':
+    $ref: 'paths/api@v2@audience@matched@update@{matched_audience_Id}.yaml'

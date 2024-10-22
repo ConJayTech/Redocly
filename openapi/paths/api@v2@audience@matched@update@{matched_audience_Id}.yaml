@@ -1,0 +1,143 @@
+patch:
+  tags:
+    - Audience API
+  summary: Edit Matched Audience
+  description: This API updated the matched audience details.
+  operationId: EditMatchedAudience
+  parameters:
+    - name: '{{ow_id_header_key}}'
+      in: header
+      description: Organization Workspace Id
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: '{{ow_id}}'
+    - name: authorization
+      in: header
+      description: Authorization Bearer Token
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: '{{bearer_token}}'
+    - name: matched_audience_Id
+      in: path
+      description: ''
+      required: true
+      style: simple
+      schema:
+        type: string
+  requestBody:
+    description: ''
+    content:
+      application/json:
+        schema:
+          title: EditMatchedAudienceRequest
+          required:
+            - audienceName
+            - rawS3URL
+          type: object
+          properties:
+            audienceName:
+              type: string
+            rawS3URL:
+              type: string
+          example:
+            audienceName: Sample audience name
+            rawS3URL: 's3://sample.url.come'
+        example:
+          audienceName: Sample audience name
+          rawS3URL: 's3://sample.url.come'
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        X-Content-Type-Options:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: nosniff
+        X-XSS-Protection:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: 1; mode=block
+        Cache-Control:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: 'no-cache, no-store, max-age=0, must-revalidate'
+        Pragma:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: no-cache
+        Expires:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: '0'
+        X-Frame-Options:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: DENY
+        Transfer-Encoding:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: chunked
+        Date:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: 'Thu, 14 Oct 2021 07:17:55 GMT'
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            title: OK-Updatename
+            required:
+              - statusCode
+              - responseObject
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                format: int32
+              responseObject:
+                title: ResponseObject2
+                required:
+                  - id
+                  - message
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                example:
+                  id: 1
+                  message: Audience created successfully
+            example:
+              statusCode: 200
+              responseObject:
+                id: 1
+                message: Your changes have been saved successfully
+          example:
+            statusCode: 200
+            responseObject:
+              id: 1
+              message: Your changes have been saved successfully
+  deprecated: false
+  security: []
